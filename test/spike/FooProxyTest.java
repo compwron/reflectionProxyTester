@@ -1,8 +1,6 @@
+package spike;
+
 import org.junit.Test;
-import spike.FooHighImpl;
-import spike.FooImplementationReflections;
-import spike.FooLowImpl;
-import spike.Toggle;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -13,14 +11,14 @@ public class FooProxyTest {
     public void shouldReturnFooHighImplWhenToggleIsSetToHigh() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Toggle.setToHigh();
         FooProxy proxy = new FooProxy();
-        assertEquals(new FooHighImpl(), proxy.getImplementationBean());
+        assertEquals(FooHighImpl.class, proxy.getImplementationBean().getClass());
     }
 
     @Test
     public void shouldReturnFooLowImplWhenToggleIsSetToHigh() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Toggle.setToLow();
         FooProxy proxy = new FooProxy();
-        assertEquals(new FooLowImpl(), proxy.getImplementationBean());
+        assertEquals(FooLowImpl.class, proxy.getImplementationBean().getClass());
     }
 
     @Test

@@ -1,6 +1,4 @@
-import spike.FooIfc;
-import spike.FooImplementationReflections;
-import spike.Toggle;
+package spike;
 
 import java.lang.reflect.InvocationTargetException;
 
