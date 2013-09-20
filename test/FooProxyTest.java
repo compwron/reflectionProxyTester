@@ -1,5 +1,6 @@
 import org.junit.Test;
 import spike.FooHighImpl;
+import spike.FooImplementationReflections;
 import spike.FooLowImpl;
 import spike.Toggle;
 
@@ -20,5 +21,12 @@ public class FooProxyTest {
         Toggle.setToLow();
         FooProxy proxy = new FooProxy();
         assertEquals(new FooLowImpl(), proxy.getImplementationBean());
+    }
+
+    @Test
+    public void allReflectionUsagesShouldBeInstantiable() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        for (FooImplementationReflections reflection :FooImplementationReflections.values()){
+            Class.forName(reflection.path).getConstructor().newInstance();
+        }
     }
 }
