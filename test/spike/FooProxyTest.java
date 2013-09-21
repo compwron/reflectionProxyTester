@@ -11,19 +11,19 @@ public class FooProxyTest {
     public void shouldReturnFooHighImplWhenToggleIsSetToHigh() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Toggle.setToHigh();
         FooProxy proxy = new FooProxy();
-        assertEquals(FooHighImpl.class, proxy.getImplementationBean().getClass());
+        assertEquals(FooHigh.class, proxy.getImplementationBean().getClass());
     }
 
     @Test
     public void shouldReturnFooLowImplWhenToggleIsSetToHigh() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Toggle.setToLow();
         FooProxy proxy = new FooProxy();
-        assertEquals(FooLowImpl.class, proxy.getImplementationBean().getClass());
+        assertEquals(FooLow.class, proxy.getImplementationBean().getClass());
     }
 
     @Test
     public void allReflectionUsagesShouldBeInstantiable() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        for (FooImplementationReflections reflection :FooImplementationReflections.values()){
+        for (Environment reflection : Environment.values()){
             Class.forName(reflection.path).getConstructor().newInstance();
         }
     }

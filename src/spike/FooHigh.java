@@ -1,6 +1,6 @@
 package spike;
 
-public class FooLowImpl implements FooIfc {
+public class FooHigh implements FooIfc {
     int thing = 1;
 
     public void setThing(int thing) {
@@ -12,7 +12,7 @@ public class FooLowImpl implements FooIfc {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FooLowImpl fooLow = (FooLowImpl) o;
+        FooLow fooLow = (FooLow) o;
 
         if (thing != fooLow.thing) return false;
 

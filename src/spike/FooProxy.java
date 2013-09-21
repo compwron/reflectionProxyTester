@@ -7,11 +7,7 @@ public class FooProxy {
 
     public FooIfc getImplementationBean() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         if (foo == null) {
-            if (Toggle.isHigh()) {
-                foo = (FooIfc) Class.forName(FooImplementationReflections.HIGH.path).getConstructor().newInstance();
-            } else {
-                foo = (FooIfc) Class.forName(FooImplementationReflections.LOW.path).getConstructor().newInstance();
-            }
+            foo = (FooIfc) Class.forName(Toggle.state().path).getConstructor().newInstance();
         }
         return foo;
     }

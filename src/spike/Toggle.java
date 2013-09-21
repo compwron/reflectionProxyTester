@@ -1,17 +1,17 @@
 package spike;
 
 public class Toggle {
-    private static States state;
-
-    public static boolean isHigh() {
-        return state.equals(States.HIGH);
-    }
+    private static Environment state;
 
     public static void setToHigh() {
-        state = States.HIGH;
+        state = Environment.HIGH;
     }
 
     public static void setToLow() {
-        state = States.LOW;
+        state = Environment.LOW;
+    }
+
+    public static Environment state() {
+        return state;
     }
 }
